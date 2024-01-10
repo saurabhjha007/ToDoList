@@ -1,6 +1,7 @@
 const btn = document.querySelector('.btn');
 const inp = document.querySelector('.inp');
 const todoList = document.querySelector('.todo-list');
+
 const form = document.querySelector('form');
 
 form.addEventListener('submit', (e)=>{
@@ -13,8 +14,7 @@ form.addEventListener('submit', (e)=>{
     let todo = document.createElement('div');
     todo.classList.add('todo');
 
-    let str = 
-    `<div class="section-A">
+    let str = `<div class="section-A">
                     <input class="check" type="checkbox">
                     <p class="text">${text}</p>
                 </div>
@@ -23,10 +23,14 @@ form.addEventListener('submit', (e)=>{
                     <li class="bin">🗑️</li>
                     <li class="down-arrow">🔽</li>
                 </div>`
-               
+
     todo.innerHTML = str;
 
     todoList.append(todo);
+
+    let list = document.createElement('li');
+    list.classList.add('down-arrow');
+
 });
 
 todoList.addEventListener('click', (e)=>{
@@ -35,7 +39,7 @@ todoList.addEventListener('click', (e)=>{
     if(className === 'check'){
         const p = e.target.nextElementSibling
         p.classList.toggle('line');
-        
+
         const curr=e.target.parentElement.parentElement;
         let last=curr.nextElementSibling;
         while(last.nextElementSibling!==null){
@@ -45,6 +49,7 @@ todoList.addEventListener('click', (e)=>{
     }
 
     if(className === 'bin'){
+        console.log(e.target);
         e.target.parentElement.parentElement.remove();
     }
 
@@ -58,9 +63,7 @@ todoList.addEventListener('click', (e)=>{
     if(className === 'up-arrow'){
         const curr = e.target.parentElement.parentElement;
         const prev = curr.previousElementSibling;
-
         prev.before(curr);
-
-        
     }
+    
 })

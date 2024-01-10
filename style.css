@@ -58,13 +58,13 @@ form{
     list-style: none;
     cursor: pointer;
 }
+
 .line{
     text-decoration: line-through;
 }
-.todo-list .todo:first-child .up-arrow{
+.todo:first-child .up-arrow{
     visibility: hidden;
 }
-
 .todo:last-child .down-arrow{
     visibility: hidden;
 }
